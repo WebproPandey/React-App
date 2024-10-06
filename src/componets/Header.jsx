@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import Task from './Task';
-
+import { nanoid } from 'nanoid';
+import Project from './Project';
 const Header = () => {
-  const [title, setTitle] = useState("");
-  const [tasks, setTasks] = useState([]); // New state for tasks
+  const [title, setTitle] = useState(" ");
+  const [tasks, setTasks] = useState([]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (title) { 
-      setTasks([...tasks, title]); 
-      setTitle("");
-    }
-  }
+      const newTask = {
+         id: nanoid(), 
+         title
+         } 
+      setTasks([...tasks, newTask]); 
+      setTitle(""); 
+}
 
   return (
     <div>
@@ -22,7 +25,7 @@ const Header = () => {
               type="text" 
               placeholder='Enter Your task' 
               className='border-2 px-2 py-1 rounded-lg' 
-              onChange={(e) => setTitle(e.target.value)} // Update title state
+              onChange={(e) => setTitle(e.target.value)} 
               value={title}  
             />
           </div>
@@ -33,7 +36,8 @@ const Header = () => {
           </button>
         </form>
       </header>
-       <Task tasks={tasks}/>
+       <Task tasks={tasks} />
+       <Project tasks={tasks}/>
     </div>
   );
 }
