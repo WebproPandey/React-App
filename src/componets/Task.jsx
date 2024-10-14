@@ -11,6 +11,7 @@ const Task = ({ tasks}) => {
     newTaskStates[index] = !newTaskStates[index]; 
     setTaskStates(newTaskStates);
     setMessage("Now task is completed!");
+    console.log("click ho rha hai ");
   };
 
   return (
